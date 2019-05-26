@@ -1,3 +1,7 @@
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace Products.API.Models
 {
     [Table("Product")]
@@ -14,8 +18,8 @@ namespace Products.API.Models
 
         public bool IsActive { get; set; }
 
-        public int? CategoryId { get; set; }
-        public virtual Category Categories { get; set; }
+       // public int? CategoryId { get; set; }
+       // public virtual Category Categories { get; set; }
 
         public ICollection<Photo> Photos { get; set; }
     
