@@ -1,0 +1,51 @@
+
+    <div  class="tab-panel">
+        <tabset class="member-tabset">
+          <tab heading="Products">
+              <button *ngIf="!createMode" class="btn btn-success mt-3" (click)="createToggle()">Create Product</button>
+              <button  class="btn btn-success mt-3" (click)="getProducts()">GetProds</button>
+
+              
+              <table  *ngIf="!createMode" class="table mt-3">
+
+                  <thead class="thead-light">
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Product Name</th>
+                      <th scope="col">Product Details</th>
+                      <th scope="col">Price</th>
+                      <th scope="col">Available</th>
+                    </tr>
+                  </thead>
+          
+                  <tbody>
+                    <tr *ngFor='let product of data'>
+                      <th scope="row">1</th>
+                      <td>{{product.productName}}</td>
+                      <td>{{product.details}}</td>
+                      <td>{{product.unitPrice}}</td>
+                      <td>{{product.isActive}}</td>
+                    </tr>
+                   
+                  </tbody>
+                </table>
+
+              <div *ngIf="createMode">
+                  <app-create-product (cancelProductCreation)="cancelCreationMode($event)" ></app-create-product>
+              </div>
+              
+
+
+          </tab>
+          <tab heading="Users">
+            <!--Here we are sending user.photos array to photoEditor child component-->
+           
+          </tab>
+          <tab heading="Orders">
+              <!--Here we are sending user.photos array to photoEditor child component-->
+             
+            </tab>
+        </tabset>
+      </div>
+    
+

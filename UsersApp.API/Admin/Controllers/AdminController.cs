@@ -37,7 +37,8 @@ namespace UsersApp.API.Admin.Controllers
 
             var claims = new[]{
                 new Claim(ClaimTypes.NameIdentifier,userFromRepo.Id.ToString()),
-                new Claim(ClaimTypes.Name,userFromRepo.Email)
+                new Claim(ClaimTypes.Name,userFromRepo.Email),
+                new Claim(ClaimTypes.Role,"admin"),
             };
             
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config.GetSection("AppSettings:Token").Value));

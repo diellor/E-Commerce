@@ -47,6 +47,31 @@
                 ],
             "UpstreamPathTemplate": "/api-admin/register",
             "UpstreamHttpMethod": ["Post"]
+        },
+        {
+            "DownstreamPathTemplate": "/api/products/createProduct",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                    {
+                        "Host": "localhost",
+                        "Port": 5002
+                    }
+                ],
+            "UpstreamPathTemplate": "/api-admin/createProduct",
+            "UpstreamHttpMethod": ["Post"]
+        },
+
+        {
+            "DownstreamPathTemplate": "/api/products",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                    {
+                        "Host": "localhost",
+                        "Port": 5002
+                    }
+                ],
+            "UpstreamPathTemplate": "/api-admin/products",
+            "UpstreamHttpMethod": ["Get"]
         }
     ],
     "GlobalConfiguration": {

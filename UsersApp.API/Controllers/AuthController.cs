@@ -53,7 +53,7 @@ namespace UsersApp.API.Controllers
 
             var claims = new[]{
                 new Claim(ClaimTypes.NameIdentifier,userFromRepo.Id.ToString()),
-                new Claim(ClaimTypes.Name,userFromRepo.Email)
+                new Claim(ClaimTypes.Name,userFromRepo.Email),
             };
             
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config.GetSection("AppSettings:Token").Value));

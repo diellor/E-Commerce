@@ -22,7 +22,7 @@ export class AdminPanelComponent implements OnInit {
       this.alertify.error(error);
   
     },()=>{
-      this.router.navigate(['/products']);
+      this.router.navigate(['/createProduct']);
     });
   }
 

@@ -1,0 +1,60 @@
+<div class="row  mt-3">
+  <div class="col-sm-5">
+   
+      <form #registerForm="ngForm" (ngSubmit)="createProduct()">
+        <h2 class="text-center text-primary">Create New Product</h2>
+        <hr />
+
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            required
+            name="ProductName"
+            [(ngModel)]="model.ProductName"
+            placeholder="Product Name"
+          />
+        </div>
+
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            required
+            name="Details"
+            [(ngModel)]="model.Details"
+            placeholder="Details"
+          />
+        </div>
+
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            required
+            name="UnitPrice"
+            [(ngModel)]="model.UnitPrice"
+            placeholder="Price "
+          />
+        </div>
+
+        <div class="form-group">
+          <label>Is Available:  </label>
+          <span class="ml-3 text-center">Yes</span> <input type="radio" name="isActive" [(ngModel)]="model.isActive"  [value]="true">
+          <span class="ml-3">No</span> <input type="radio" name="isActive" [(ngModel)]="model.isActive" [value]="false">
+        </div>
+
+        <div class="form-group text-center">
+          <button [disabled]="!registerForm.valid" class="btn btn-success" type="submit">Create</button>
+          <button class="btn btn-light" (click)="goBack()" type="submit">Go Back</button>
+        </div> 
+      </form>
+  </div>
+
+  <div class="col-sm-7">
+      <p>Photo upload</p>
+      
+      </div>
+</div>
+
+

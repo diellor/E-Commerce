@@ -5,6 +5,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import {  HttpClientModule } from '@angular/common/http';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { RouterModule } from '@angular/router';
+
 import { appRoutes } from '../routes';
 
 
@@ -14,11 +15,14 @@ import { HomeComponent } from '../home/home.component';
 import { ProductListComponent } from '../products/product-list/product-list.component';
 import { RegisterComponent } from '../register/register.component';
 import {AdminPanelComponent} from'../Admin/admin-panel/admin-panel.component'
+import {CreateProductComponent} from'../Admin/create-product/create-product.component'
+import {AdminDashboardComponent} from'../Admin/admin-dashboard/admin-dashboard.component'
 
 import { AuthService } from '../services/auth.service';
 import { AlertifyService } from '../services/alertify.service';
 import { ErrorInterceptorProvider } from 'src/services/error.interceptor';
 import { from } from 'rxjs';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 
 
 
@@ -32,7 +36,10 @@ import { from } from 'rxjs';
       RegisterComponent,
       
       ProductListComponent,
-      AdminPanelComponent 
+      AdminPanelComponent,
+      CreateProductComponent,
+      AdminDashboardComponent,
+      
   
    ],
    imports: [
@@ -41,6 +48,7 @@ import { from } from 'rxjs';
       HttpClientModule,
       BsDropdownModule.forRoot(),
       RouterModule.forRoot(appRoutes),
+      TabsModule.forRoot(),
    ],
    providers: [
       AuthService,
