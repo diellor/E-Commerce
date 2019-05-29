@@ -26,7 +26,7 @@ namespace Products.API.Controllers
             var products = await repo.GetProducts();
 
             var productToReturn = mapper.Map<IEnumerable<ProductForAdminList>>(products);
-
+            
             return Ok(productToReturn);
         }
 
@@ -56,6 +56,29 @@ namespace Products.API.Controllers
             }
 
             throw new Exception($"Updating user  failed to save");
+        }
+        [HttpDelete("delete/{id}")]
+        public async Task<IActionResult> DeleteProduct(int id){
+            var product = await repo.GetProduct(id);
+
+            repo.Delete(product);
+
+            if(await repo.SaveAll())
+            return Ok();
+
+            return BadRequest("Failed to remove product");
+        }
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateProduct(int id,ProductForUpdateDto prodForUpdate){
+            var productFromRepo = await repo.GetProduct(id);
+
+            //Kjo i merr t dhanat e reja qe vijn prej DTO's si parameter edhe i update qato ne productFromRepo
+            mapper.Map(prodForUpdate,productFromRepo);
+
+            if(await repo.SaveAll()){
+                return NoContent();
+            }
+            throw new Exception($"Updating user {id} failed to save");
         }
     }
 }

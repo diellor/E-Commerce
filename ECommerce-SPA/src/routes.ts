@@ -4,11 +4,12 @@ import { Routes } from '@angular/router';
 import { AuthGuard } from "./guards/auth.guard";
 import { AdminPanelComponent } from "./Admin/admin-panel/admin-panel.component";
 import { AdminDashboardComponent } from "./Admin/admin-dashboard/admin-dashboard.component";
+import { ProductListResolver } from "./Resolvers/product-list.resolver";
 
 export const appRoutes: Routes = [
     {path: '',component:HomeComponent},
     {path:'admin',component:AdminPanelComponent},
-    {path:'AdminPanel',component:AdminDashboardComponent},
+    {path:'AdminPanel',component:AdminDashboardComponent, resolve:{products:ProductListResolver}},
     {
         path:'',
         canActivate:[AuthGuard],

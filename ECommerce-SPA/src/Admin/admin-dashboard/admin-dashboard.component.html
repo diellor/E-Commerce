@@ -3,8 +3,7 @@
         <tabset class="member-tabset">
           <tab heading="Products">
               <button *ngIf="!createMode" class="btn btn-success mt-3" (click)="createToggle()">Create Product</button>
-              <button  class="btn btn-success mt-3" (click)="getProducts()">GetProds</button>
-
+             
               
               <table  *ngIf="!createMode" class="table mt-3">
 
@@ -15,27 +14,33 @@
                       <th scope="col">Product Details</th>
                       <th scope="col">Price</th>
                       <th scope="col">Available</th>
+                      <th scope="col"></th>
                     </tr>
                   </thead>
           
                   <tbody>
-                    <tr *ngFor='let product of data'>
+                    <tr *ngFor='let product of products'>
                       <th scope="row">1</th>
                       <td>{{product.productName}}</td>
                       <td>{{product.details}}</td>
                       <td>{{product.unitPrice}}</td>
                       <td>{{product.isActive}}</td>
+                      <button type="button" (click)="deleteProduct(product.productId)" class="btn btn-danger btn-s">
+                         <span class="fa fa-trash"></span>
+                      </button>
+
+                      <button type="button" class="ml-2 btn btn-primary btn-s">
+                        <span class="fa fa-edit"></span>
+                     </button>
                     </tr>
                    
                   </tbody>
                 </table>
 
               <div *ngIf="createMode">
-                  <app-create-product (cancelProductCreation)="cancelCreationMode($event)" ></app-create-product>
+                  <app-create-product (cancelProductCreation)="cancelCreationMode($event)" (addedProduct)="updateList($event)" ></app-create-product>
               </div>
               
-
-
           </tab>
           <tab heading="Users">
             <!--Here we are sending user.photos array to photoEditor child component-->

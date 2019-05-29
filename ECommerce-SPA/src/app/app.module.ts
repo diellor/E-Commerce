@@ -23,6 +23,8 @@ import { AlertifyService } from '../services/alertify.service';
 import { ErrorInterceptorProvider } from 'src/services/error.interceptor';
 import { from } from 'rxjs';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { ProductListResolver } from 'src/Resolvers/product-list.resolver';
+import { EditProductComponent } from 'src/Admin/edit-product/edit-product.component';
 
 
 
@@ -39,6 +41,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
       AdminPanelComponent,
       CreateProductComponent,
       AdminDashboardComponent,
+      EditProductComponent
       
   
    ],
@@ -53,7 +56,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
    providers: [
       AuthService,
       AlertifyService,
-
+      ProductListResolver,
       ErrorInterceptorProvider
    ],
    bootstrap: [

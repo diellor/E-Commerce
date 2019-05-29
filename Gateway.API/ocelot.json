@@ -72,6 +72,18 @@
                 ],
             "UpstreamPathTemplate": "/api-admin/products",
             "UpstreamHttpMethod": ["Get"]
+        },
+        {
+            "DownstreamPathTemplate": "/api/products/delete/{id}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                    {
+                        "Host": "localhost",
+                        "Port": 5002
+                    }
+                ],
+            "UpstreamPathTemplate": "/api-admin/products/delete/{id}",
+            "UpstreamHttpMethod": ["Delete"]
         }
     ],
     "GlobalConfiguration": {

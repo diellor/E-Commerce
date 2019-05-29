@@ -19,5 +19,13 @@ export class ProductService{
     getProducts():Observable<Product[]>{
         return this.http.get<Product[]>('http://localhost:5001/api-admin/products');
     }
+
+    deleteProduct(productId:number){
+        return this.http.delete("http://localhost:5001/api-admin/products/delete/"+productId);
+    }
+
+    updateUser(productId:number,product:Product){
+        return this.http.put("http://localhost:5001/api-admin/products/update/"+productId,product);
+    }
     
 }
