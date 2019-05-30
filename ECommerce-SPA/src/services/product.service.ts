@@ -11,6 +11,7 @@ import { Product } from "src/models/product";
 export class ProductService{
 
     constructor(private http:HttpClient){}
+    Id:number;
 
     createProduct(model:any){
         return this.http.post('http://localhost:5001/api-admin/createProduct',model);
@@ -19,13 +20,20 @@ export class ProductService{
     getProducts():Observable<Product[]>{
         return this.http.get<Product[]>('http://localhost:5001/api-admin/products');
     }
+    getProduct(id):Observable<Product>{
+        return this.http.get<Product>("http://localhost:5001/api-admin/product/"+id);
+    }
 
     deleteProduct(productId:number){
         return this.http.delete("http://localhost:5001/api-admin/products/delete/"+productId);
     }
 
-    updateUser(productId:number,product:Product){
+    updateProduct(productId:number,product:Product){
         return this.http.put("http://localhost:5001/api-admin/products/update/"+productId,product);
+    }
+    
+    setProductId(id:number){
+        this.Id = id;
     }
     
 }

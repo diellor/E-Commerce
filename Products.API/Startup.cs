@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using AutoMapper;
 using Products.API.Data;
+using Products.API.Helpers;
 
 namespace Products.API
 {
@@ -27,9 +28,10 @@ namespace Products.API
            
             services.AddAutoMapper();
             
-            
+           
+
             services.AddCors();
-        
+            services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
             services.AddScoped<IProductRepository,ProductRepository>();
         }
 

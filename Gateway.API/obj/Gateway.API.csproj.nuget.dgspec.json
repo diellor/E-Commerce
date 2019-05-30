@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Diellor\\Desktop\\E-Commerce\\Gateway.API\\Gateway.API.csproj": {}
+    "c:\\Users\\Diellor\\Desktop\\E-Commerce\\Gateway.API\\Gateway.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Diellor\\Desktop\\E-Commerce\\Gateway.API\\Gateway.API.csproj": {
+    "c:\\Users\\Diellor\\Desktop\\E-Commerce\\Gateway.API\\Gateway.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Diellor\\Desktop\\E-Commerce\\Gateway.API\\Gateway.API.csproj",
+        "projectUniqueName": "c:\\Users\\Diellor\\Desktop\\E-Commerce\\Gateway.API\\Gateway.API.csproj",
         "projectName": "Gateway.API",
-        "projectPath": "C:\\Users\\Diellor\\Desktop\\E-Commerce\\Gateway.API\\Gateway.API.csproj",
+        "projectPath": "c:\\Users\\Diellor\\Desktop\\E-Commerce\\Gateway.API\\Gateway.API.csproj",
         "packagesPath": "C:\\Users\\Diellor\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Diellor\\Desktop\\E-Commerce\\Gateway.API\\obj\\",
+        "outputPath": "c:\\Users\\Diellor\\Desktop\\E-Commerce\\Gateway.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\ProgramData\\Xamarin\\NuGet\\",

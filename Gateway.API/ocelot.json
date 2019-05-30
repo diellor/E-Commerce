@@ -74,6 +74,18 @@
             "UpstreamHttpMethod": ["Get"]
         },
         {
+            "DownstreamPathTemplate": "/api/products/{id}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                    {
+                        "Host": "localhost",
+                        "Port": 5002
+                    }
+                ],
+            "UpstreamPathTemplate": "/api-admin/product/{id}",
+            "UpstreamHttpMethod": ["Get"]
+        },
+        {
             "DownstreamPathTemplate": "/api/products/delete/{id}",
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
@@ -84,6 +96,18 @@
                 ],
             "UpstreamPathTemplate": "/api-admin/products/delete/{id}",
             "UpstreamHttpMethod": ["Delete"]
+        },
+        {
+            "DownstreamPathTemplate": "/api/products/update/{id}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                    {
+                        "Host": "localhost",
+                        "Port": 5002
+                    }
+                ],
+            "UpstreamPathTemplate": "/api-admin/products/update/{id}",
+            "UpstreamHttpMethod": ["Put"]
         }
     ],
     "GlobalConfiguration": {

@@ -22,11 +22,25 @@ namespace Products.API.Controllers
             this.mapper = mapper;
         }
         [HttpGet]
+        
         public async Task<IActionResult> GetProducts(){
             var products = await repo.GetProducts();
 
             var productToReturn = mapper.Map<IEnumerable<ProductForAdminList>>(products);
             
+            return Ok(productToReturn);
+        }
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetProduct(int id){
+            var product = await repo.GetProduct(id);
+
+            var productToReturn = mapper.Map<ProductForCreation>(product);
+
+
+            if(productToReturn == null){
+                return NotFound();
+            }
+
             return Ok(productToReturn);
         }
 
@@ -68,7 +82,7 @@ namespace Products.API.Controllers
 
             return BadRequest("Failed to remove product");
         }
-        [HttpPut("{id}")]
+        [HttpPut("update/{id}")]
         public async Task<IActionResult> UpdateProduct(int id,ProductForUpdateDto prodForUpdate){
             var productFromRepo = await repo.GetProduct(id);
 

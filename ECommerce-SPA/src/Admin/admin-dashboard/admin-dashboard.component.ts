@@ -16,6 +16,7 @@ export class AdminDashboardComponent implements OnInit {
 
   products:Product[];
   createMode = false;
+  editMode = false;
   constructor(private productService:ProductService,private alertify:AlertifyService,private router:Router,private route:ActivatedRoute) { }
 
  // data:any;
@@ -26,8 +27,8 @@ export class AdminDashboardComponent implements OnInit {
     })
   }
 
-  createToggle(){
-    this.createMode = true;
+  createToggle(product:Product){
+    this.router.navigate(['product/edit',product]);
   }
 
   cancelCreationMode(createMode:boolean){ //false prej fmijs
@@ -48,8 +49,11 @@ export class AdminDashboardComponent implements OnInit {
       this.alertify.error("Failed to delete");
     });
   }
-  updateProduct(product:Product){
+  editToggle(id:number){
+    this.productService.setProductId(id);
+    this.router.navigate(['product/edit',id]);
     
   }
+  
   
 }

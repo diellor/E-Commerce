@@ -5,7 +5,7 @@
               <button *ngIf="!createMode" class="btn btn-success mt-3" (click)="createToggle()">Create Product</button>
              
               
-              <table  *ngIf="!createMode" class="table mt-3">
+              <table   *ngIf="!createMode" class="table mt-3">
 
                   <thead class="thead-light">
                     <tr>
@@ -17,9 +17,9 @@
                       <th scope="col"></th>
                     </tr>
                   </thead>
-          
-                  <tbody>
-                    <tr *ngFor='let product of products'>
+                 
+                  <tbody >
+                    <tr  *ngFor='let product of products'>
                       <th scope="row">1</th>
                       <td>{{product.productName}}</td>
                       <td>{{product.details}}</td>
@@ -29,7 +29,7 @@
                          <span class="fa fa-trash"></span>
                       </button>
 
-                      <button type="button" class="ml-2 btn btn-primary btn-s">
+                      <button type="button" (click)="editToggle(product.productId)" class="ml-2 btn btn-primary btn-s">
                         <span class="fa fa-edit"></span>
                      </button>
                     </tr>

@@ -24,7 +24,9 @@ import { ErrorInterceptorProvider } from 'src/services/error.interceptor';
 import { from } from 'rxjs';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ProductListResolver } from 'src/Resolvers/product-list.resolver';
+import { ProductEditResolver } from 'src/Resolvers/product-edit.resolver';
 import { EditProductComponent } from 'src/Admin/edit-product/edit-product.component';
+import { PreventUnsavedChanges } from 'src/guards/prevent-unsaved-changes.guard';
 
 
 
@@ -57,6 +59,8 @@ import { EditProductComponent } from 'src/Admin/edit-product/edit-product.compon
       AuthService,
       AlertifyService,
       ProductListResolver,
+      ProductEditResolver,
+      PreventUnsavedChanges,
       ErrorInterceptorProvider
    ],
    bootstrap: [

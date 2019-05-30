@@ -5,11 +5,16 @@ import { AuthGuard } from "./guards/auth.guard";
 import { AdminPanelComponent } from "./Admin/admin-panel/admin-panel.component";
 import { AdminDashboardComponent } from "./Admin/admin-dashboard/admin-dashboard.component";
 import { ProductListResolver } from "./Resolvers/product-list.resolver";
+import { EditProductComponent } from "./Admin/edit-product/edit-product.component";
+import { ProductEditResolver } from "./Resolvers/product-edit.resolver";
+import { PreventUnsavedChanges } from "./guards/prevent-unsaved-changes.guard";
 
 export const appRoutes: Routes = [
     {path: '',component:HomeComponent},
     {path:'admin',component:AdminPanelComponent},
+    
     {path:'AdminPanel',component:AdminDashboardComponent, resolve:{products:ProductListResolver}},
+    {path:'product/edit/:id',component:EditProductComponent, resolve:{product:ProductEditResolver}, canDeactivate:[PreventUnsavedChanges]},
     {
         path:'',
         canActivate:[AuthGuard],

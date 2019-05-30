@@ -12,6 +12,10 @@ namespace Products.API.Helpers
         public AutoMapperProfiles(){
             CreateMap<Product, ProductForAdminList>();
             CreateMap<ProductForUpdateDto, Product>();
+            CreateMap<Product, ProductForCreation>();
+
+            CreateMap<Photo,PhotoForReturnDto>();
+            CreateMap<PhotoForCreationDto, Photo>();
         }
          
     }

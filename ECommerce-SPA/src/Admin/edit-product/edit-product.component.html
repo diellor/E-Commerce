@@ -1,3 +1,62 @@
-<p>
-  edit-product works!
-</p>
+<div class="row  mt-3">
+  <div class="col-sm-5">
+      <div *ngIf="editForm.dirty" class="alert alert-info">
+          <strong>Information: </strong>You have made changes. Any unsaved changes will be lost!
+        </div>
+    <div class="col-sm-8">
+      
+      </div>
+      <form id="editForm" #editForm="ngForm"(ngSubmit)="updateProduct()">
+        <h2 class="text-center text-primary"></h2>
+        <hr />
+
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            required
+            name="productName"
+            [(ngModel)]="product.productName"
+            placeholder="updatedProduct Name"
+          />
+        </div>
+
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            required
+            name="details"
+            [(ngModel)]="product.details"
+            placeholder="Details"
+          />
+        </div>
+
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            required
+            name="unitPrice"
+            [(ngModel)]="product.unitPrice"
+            placeholder="Price "
+          />
+        </div>
+
+        <div class="form-group">
+          <label>Is Available:  </label>
+          <span class="ml-3 text-center">Yes</span> <input type="radio" name="isActive" [(ngModel)]="product.isActive"  [value]="true">
+          <span class="ml-3">No</span> <input type="radio" name="isActive" [(ngModel)]="product.isActive"  [value]="false">
+        </div>
+
+        <div class="form-group text-center">
+          <button [disabled]="!editForm.dirty" class="btn btn-success" type="submit">Save changes</button>
+          
+        </div> 
+      </form>
+  </div>
+
+  <div class="col-sm-7">
+      <p>Photo upload</p>
+      </div>
+</div>
