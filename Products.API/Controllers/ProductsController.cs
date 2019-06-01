@@ -34,7 +34,7 @@ namespace Products.API.Controllers
         public async Task<IActionResult> GetProduct(int id){
             var product = await repo.GetProduct(id);
 
-            var productToReturn = mapper.Map<ProductForCreation>(product);
+            var productToReturn = mapper.Map<ProductForAdminList>(product);
 
 
             if(productToReturn == null){

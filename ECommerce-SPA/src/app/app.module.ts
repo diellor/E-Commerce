@@ -27,6 +27,7 @@ import { ProductListResolver } from 'src/Resolvers/product-list.resolver';
 import { ProductEditResolver } from 'src/Resolvers/product-edit.resolver';
 import { EditProductComponent } from 'src/Admin/edit-product/edit-product.component';
 import { PreventUnsavedChanges } from 'src/guards/prevent-unsaved-changes.guard';
+import { PhotoEditorComponent } from 'src/Admin/photo-editor/photo-editor.component';
 
 
 
@@ -43,7 +44,8 @@ import { PreventUnsavedChanges } from 'src/guards/prevent-unsaved-changes.guard'
       AdminPanelComponent,
       CreateProductComponent,
       AdminDashboardComponent,
-      EditProductComponent
+      EditProductComponent,
+      PhotoEditorComponent
       
   
    ],

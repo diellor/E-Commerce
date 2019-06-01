@@ -47,6 +47,7 @@ namespace Products.API.Controllers
             
         }
         [HttpPost]
+        //productId vjen prej route'it
         public async Task<IActionResult> AddPhotoForProduct(int productId,[FromForm]PhotoForCreationDto photoForCreationDto){
             var productFromRepo = await repo.GetProduct(productId);
 

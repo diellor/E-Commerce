@@ -27,8 +27,9 @@ export class AdminDashboardComponent implements OnInit {
     })
   }
 
-  createToggle(product:Product){
-    this.router.navigate(['product/edit',product]);
+  createToggle(){
+    //this.router.navigate(['product/edit',product]);
+    this.createMode=true;
   }
 
   cancelCreationMode(createMode:boolean){ //false prej fmijs
