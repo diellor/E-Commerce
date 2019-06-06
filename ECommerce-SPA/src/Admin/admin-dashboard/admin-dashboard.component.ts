@@ -44,7 +44,11 @@ export class AdminDashboardComponent implements OnInit {
       this.alertify.success("Product has been deleted");
 
       //qetu e fshin prej array'it t produkteve(listes) qe e kena
-      this.products.splice(this.products.findIndex(p=>id ===id),1);
+      for( var i = 0; i < this.products.length; i++){ 
+        if (this.products[i].productId === id) {
+          this.products.splice(i, 1); 
+        }
+     }
 
     },error=>{
       this.alertify.error("Failed to delete");
@@ -55,6 +59,4 @@ export class AdminDashboardComponent implements OnInit {
     this.router.navigate(['product/edit',id]);
     
   }
-  
-  
 }

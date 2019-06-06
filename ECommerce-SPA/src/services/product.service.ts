@@ -31,6 +31,9 @@ export class ProductService{
     updateProduct(productId:number,product:Product){
         return this.http.put("http://localhost:5001/api-admin/products/update/"+productId,product);
     }
+    setMainPhoto(productId:number,id:number){
+        return this.http.post("http://localhost:5001/api-admin/products/"+productId+"/photos/"+id+"/setMain",{});
+    }
     
     setProductId(id:number){
         this.Id = id;

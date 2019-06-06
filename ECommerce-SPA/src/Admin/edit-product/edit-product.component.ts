@@ -40,4 +40,6 @@ export class EditProductComponent implements OnInit {
       this.alertify.error("Failed to update");
     });
   }
+
+
 }

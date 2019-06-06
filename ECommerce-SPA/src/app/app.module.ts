@@ -5,6 +5,10 @@ import { JwtModule } from '@auth0/angular-jwt';
 import {  HttpClientModule } from '@angular/common/http';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { RouterModule } from '@angular/router';
+import { FileUploadModule } from 'ng2-file-upload';
+import { NgxGalleryModule } from 'ngx-gallery';
+
+
 
 import { appRoutes } from '../routes';
 
@@ -14,9 +18,11 @@ import { NavComponent } from '../nav/nav.component';
 import { HomeComponent } from '../home/home.component';
 import { ProductListComponent } from '../products/product-list/product-list.component';
 import { RegisterComponent } from '../register/register.component';
-import {AdminPanelComponent} from'../Admin/admin-panel/admin-panel.component'
-import {CreateProductComponent} from'../Admin/create-product/create-product.component'
-import {AdminDashboardComponent} from'../Admin/admin-dashboard/admin-dashboard.component'
+import {AdminPanelComponent} from'../Admin/admin-panel/admin-panel.component';
+import {CreateProductComponent} from'../Admin/create-product/create-product.component';
+import {AdminDashboardComponent} from'../Admin/admin-dashboard/admin-dashboard.component';
+import { ProductsCardComponent } from 'src/products/products-card/products-card.component';
+
 
 import { AuthService } from '../services/auth.service';
 import { AlertifyService } from '../services/alertify.service';
@@ -25,9 +31,14 @@ import { from } from 'rxjs';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ProductListResolver } from 'src/Resolvers/product-list.resolver';
 import { ProductEditResolver } from 'src/Resolvers/product-edit.resolver';
+
 import { EditProductComponent } from 'src/Admin/edit-product/edit-product.component';
 import { PreventUnsavedChanges } from 'src/guards/prevent-unsaved-changes.guard';
 import { PhotoEditorComponent } from 'src/Admin/photo-editor/photo-editor.component';
+import { ProductsDetailComponent } from 'src/products/products-detail/products-detail.component';
+import { ProductDetailResolver } from 'src/Resolvers/product-detail.resolver';
+
+
 
 
 
@@ -45,7 +56,9 @@ import { PhotoEditorComponent } from 'src/Admin/photo-editor/photo-editor.compon
       CreateProductComponent,
       AdminDashboardComponent,
       EditProductComponent,
-      PhotoEditorComponent
+      PhotoEditorComponent,
+      ProductsCardComponent,
+      ProductsDetailComponent
       
   
    ],
@@ -56,6 +69,8 @@ import { PhotoEditorComponent } from 'src/Admin/photo-editor/photo-editor.compon
       BsDropdownModule.forRoot(),
       RouterModule.forRoot(appRoutes),
       TabsModule.forRoot(),
+      FileUploadModule,
+      NgxGalleryModule
    ],
    providers: [
       AuthService,
@@ -63,7 +78,8 @@ import { PhotoEditorComponent } from 'src/Admin/photo-editor/photo-editor.compon
       ProductListResolver,
       ProductEditResolver,
       PreventUnsavedChanges,
-      ErrorInterceptorProvider
+      ErrorInterceptorProvider,
+      ProductDetailResolver
    ],
    bootstrap: [
       AppComponent

@@ -16,6 +16,7 @@ export class CreateProductComponent implements OnInit {
   product:Product;
   @Output() cancelProductCreation = new EventEmitter();
   @Output() addedProduct = new EventEmitter<Product>();
+  photoUploadMode = false;
   constructor(private productService:ProductService,private alertify:AlertifyService,private router:Router) { }
 
   ngOnInit() {
@@ -25,8 +26,12 @@ export class CreateProductComponent implements OnInit {
     this.productService.createProduct(this.model).subscribe(next=>{
       this.alertify.success("BONI");
       this.product = this.model;
-      this.addedProduct.emit(this.product);
-      this.goBack();
+      this.product.productId = parseInt(JSON.stringify(next));
+      this.productService.setProductId(this.product.productId);
+
+      this.photoUploadMode = true;
+      
+      
       
     },error=>{
       this.alertify.success(error);
@@ -35,6 +40,12 @@ export class CreateProductComponent implements OnInit {
 
   goBack(){
     this.cancelProductCreation.emit(false);
+    if(this.product){
+      this.addedProduct.emit(this.product);
+    }
+    
   }
+
+
 
 }

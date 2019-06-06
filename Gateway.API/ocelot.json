@@ -108,6 +108,33 @@
                 ],
             "UpstreamPathTemplate": "/api-admin/products/update/{id}",
             "UpstreamHttpMethod": ["Put"]
+        },
+
+        {
+            "DownstreamPathTemplate": "/api/products/{productId}/photos",
+   
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                    {
+                        "Host": "localhost",
+                        "Port": 5002
+                    }
+                ],
+            "UpstreamPathTemplate": "/api-admin/products/{productId}/photos",
+            "UpstreamHttpMethod": ["Post"]
+        },
+        {
+            "DownstreamPathTemplate": "/api/products/{productId}/photos/{id}/setMain",
+   
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                    {
+                        "Host": "localhost",
+                        "Port": 5002
+                    }
+                ],
+            "UpstreamPathTemplate": "/api-admin/products/{productId}/photos/{id}/setMain",
+            "UpstreamHttpMethod": ["Post"]
         }
     ],
     "GlobalConfiguration": {

@@ -1,3 +1,5 @@
+using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
 using CloudinaryDotNet;
@@ -72,6 +74,12 @@ namespace Products.API.Controllers
 
             var photo = mapper.Map<Photo>(photoForCreationDto);
 
+             //if this is the first photo added we will assing this photo as main photo
+            if(!productFromRepo.Photos.Any(u => u.isMain)){
+                photo.isMain = true;
+            }
+
+
             productFromRepo.Photos.Add(photo);
 
             //if saving is successfull
@@ -88,5 +96,32 @@ namespace Products.API.Controllers
             return BadRequest("Could not add the photo");
 
         }
+        [HttpPost("{id}/setMain")]
+        public async Task<IActionResult> setMainPhoto(int productId,int id){
+
+            var productFromRepo = await repo.GetProduct(productId);
+            //Check if photo exists in photos of user 
+            //nese Id qe po e pass in nuk e match asnje ID te photot athere unauthorized
+            if(!productFromRepo.Photos.Any(p=>p.Id==id)){
+                return Unauthorized();
+            }
+
+            var photoFromRepo = await repo.GetPhoto(id); //ID-e fotos
+
+            if(photoFromRepo.isMain)
+            return BadRequest("This Is already a main photo");
+
+            var currentMainPhoto = await repo.GetMainPhotoForProduct(productId);
+
+            currentMainPhoto.isMain = false;
+            //this is the photo that user set as main from clientside
+            photoFromRepo.isMain = true;
+
+            if(await repo.SaveAll()){
+                return NoContent();
+            }
+            return BadRequest("Could not set the photo to main");
+        }
     }
+    
 }

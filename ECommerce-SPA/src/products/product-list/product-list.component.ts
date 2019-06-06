@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Product } from 'src/models/product';
+import { ActivatedRoute } from '@angular/router';
+import { AlertifyService } from 'src/services/alertify.service';
 
 @Component({
   selector: 'app-product-list',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductListComponent implements OnInit {
 
-  constructor() { }
+  products:Product[];
+  constructor(private alertify:AlertifyService,private route:ActivatedRoute) { }
 
   ngOnInit() {
+    this.route.data.subscribe(data =>{
+      this.products = data['products'];
+    })
   }
 
 }

@@ -36,10 +36,11 @@
                    
                   </tbody>
                 </table>
-
+               
               <div *ngIf="createMode">
                   <app-create-product (cancelProductCreation)="cancelCreationMode($event)" (addedProduct)="updateList($event)" ></app-create-product>
               </div>
+          
               
           </tab>
           <tab heading="Users">

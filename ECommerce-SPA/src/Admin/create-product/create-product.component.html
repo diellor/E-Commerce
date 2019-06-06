@@ -1,6 +1,6 @@
 <div class="row  mt-3">
   <div class="col-sm-5">
-   
+    <div class="col-sm-8">
       <form #registerForm="ngForm" (ngSubmit)="createProduct()">
         <h2 class="text-center text-primary">Create New Product</h2>
         <hr />
@@ -50,10 +50,14 @@
         </div> 
       </form>
   </div>
+  </div>
 
   <div class="col-sm-7">
-     <app-photo-editor [photos]="product.photos"></app-photo-editor>
-      </div>
+    <div *ngIf='photoUploadMode'>
+      <app-photo-editor [product]="product" ></app-photo-editor>
+     </div>
+  </div>
+ 
 </div>
 
 

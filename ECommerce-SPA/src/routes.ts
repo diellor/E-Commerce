@@ -8,6 +8,8 @@ import { ProductListResolver } from "./Resolvers/product-list.resolver";
 import { EditProductComponent } from "./Admin/edit-product/edit-product.component";
 import { ProductEditResolver } from "./Resolvers/product-edit.resolver";
 import { PreventUnsavedChanges } from "./guards/prevent-unsaved-changes.guard";
+import { ProductsDetailComponent } from "./products/products-detail/products-detail.component";
+import { ProductDetailResolver } from "./Resolvers/product-detail.resolver";
 
 export const appRoutes: Routes = [
     {path: '',component:HomeComponent},
@@ -20,7 +22,8 @@ export const appRoutes: Routes = [
         canActivate:[AuthGuard],
         runGuardsAndResolvers: 'always',
         children:[
-            {path:'products',component:ProductListComponent},  
+            {path:'products',component:ProductListComponent, resolve:{products:ProductListResolver}},  
+            {path:'products/:id',component:ProductsDetailComponent,resolve:{product:ProductDetailResolver}},
         ]
     },
     //WildCardRoute if not match redirectTo

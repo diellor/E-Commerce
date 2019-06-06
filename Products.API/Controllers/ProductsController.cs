@@ -66,7 +66,7 @@ namespace Products.API.Controllers
 
              if(await repo.SaveAll()){
                 
-                return NoContent();
+                return Ok(prod.ProductId);
             }
 
             throw new Exception($"Updating user  failed to save");

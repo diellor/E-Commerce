@@ -15,6 +15,7 @@ namespace Products.API.Data
         //getting individualUser from dbs
         Task<Product> GetProduct(int id);
         Task<Photo> GetPhoto(int id);
+        Task<Photo> GetMainPhotoForProduct(int id);
       //  Task<Photo> getMainPhotoForUser(int userId);
     }
 }

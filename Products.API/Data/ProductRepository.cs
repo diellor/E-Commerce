@@ -48,5 +48,8 @@ namespace Products.API.Data
         {
             return await context.SaveChangesAsync() > 0 ;
         }
+        public async Task<Photo> GetMainPhotoForProduct(int productId){
+            return await context.Photos.Where(x=>x.ProductId == productId).FirstOrDefaultAsync(p=>p.isMain);
+        }
     }
 }
