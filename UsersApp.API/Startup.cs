@@ -13,7 +13,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using UsersApp.API.Admin.Data;
 using UsersApp.API.Data;
 
 namespace UsersApp.API
@@ -32,7 +31,7 @@ namespace UsersApp.API
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddDbContext<DataContext>(options=>options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDbContext<AdminDataContext>(options=>options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+           
 
 
             

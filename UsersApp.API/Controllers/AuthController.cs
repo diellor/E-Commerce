@@ -29,13 +29,15 @@ namespace UsersApp.API.Controllers
         public async Task<IActionResult> Register(UserForRegistrationDto userDto){
             userDto.Email = userDto.Email.ToLower();
 
-            if(await repo.UserExists(userDto.Email,false)){
+            if(await repo.UserExists(userDto.Email)){
                 return BadRequest("Email already exists");
             }
 
             var userToCreate = new User
             {
-                Email = userDto.Email
+                Email = userDto.Email,
+                //By default cdo user qe regjistrohet e ka rolin USER
+                Role = Role.User
             };
 
             var createdUser = await repo.Register(userToCreate,userDto.Password);
@@ -54,6 +56,7 @@ namespace UsersApp.API.Controllers
             var claims = new[]{
                 new Claim(ClaimTypes.NameIdentifier,userFromRepo.Id.ToString()),
                 new Claim(ClaimTypes.Name,userFromRepo.Email),
+                new Claim(ClaimTypes.Role, userFromRepo.Role)
             };
             
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config.GetSection("AppSettings:Token").Value));
@@ -74,8 +77,7 @@ namespace UsersApp.API.Controllers
             return Ok(new{
                 token = tokenHandler.WriteToken(token)
             });
-            
-
+        
         }
 
     }

@@ -135,6 +135,19 @@
                 ],
             "UpstreamPathTemplate": "/api-admin/products/{productId}/photos/{id}/setMain",
             "UpstreamHttpMethod": ["Post"]
+        },
+        {
+            "DownstreamPathTemplate": "/api/products/{productId}/photos/{id}",
+   
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                    {
+                        "Host": "localhost",
+                        "Port": 5002
+                    }
+                ],
+            "UpstreamPathTemplate": "/api-admin/products/{productId}/photos/{id}",
+            "UpstreamHttpMethod": ["Delete"]
         }
     ],
     "GlobalConfiguration": {

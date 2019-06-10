@@ -15,6 +15,7 @@ namespace UsersApp.API.Models
 
         public string City { get; set; }
         public string Country { get; set; }
+        public string Role { get; set; }
 
         public Photo Photo { get; set; }
     }

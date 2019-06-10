@@ -122,6 +122,44 @@ namespace Products.API.Controllers
             }
             return BadRequest("Could not set the photo to main");
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeletePhoto(int productId, int id)
+        {
+           
+            var product = await repo.GetProduct(productId);
+
+            if (!product.Photos.Any(p => p.Id == id))
+                return Unauthorized();
+
+            var photoFromRepo = await repo.GetPhoto(id);
+
+            if (photoFromRepo.isMain)
+                return BadRequest("You cannot delete your main photo");
+
+            if (photoFromRepo.publicId != null)
+            {
+                var deleteParams = new DeletionParams(photoFromRepo.publicId);
+
+                var result = cloudinary.Destroy(deleteParams);
+
+                if (result.Result == "ok")
+                {
+                    repo.Delete(photoFromRepo);
+                }
+            }
+
+            if (photoFromRepo.publicId == null)
+            {
+                repo.Delete(photoFromRepo);
+            }
+
+            if (await repo.SaveAll())
+                return Ok();
+
+            return BadRequest("Failed to delete the photo");
+        }
+
     }
     
 }

@@ -34,9 +34,13 @@ export class ProductService{
     setMainPhoto(productId:number,id:number){
         return this.http.post("http://localhost:5001/api-admin/products/"+productId+"/photos/"+id+"/setMain",{});
     }
+    deletePhoto(productId:number,id:number){
+        return this.http.delete("http://localhost:5001/api-admin/products/"+productId+"/photos/"+id);
+    }
     
     setProductId(id:number){
         this.Id = id;
     }
+
     
 }

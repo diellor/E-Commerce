@@ -13,7 +13,6 @@ import { ProductDetailResolver } from "./Resolvers/product-detail.resolver";
 
 export const appRoutes: Routes = [
     {path: '',component:HomeComponent},
-    {path:'admin',component:AdminPanelComponent},
     
     {path:'AdminPanel',component:AdminDashboardComponent, resolve:{products:ProductListResolver}},
     {path:'product/edit/:id',component:EditProductComponent, resolve:{product:ProductEditResolver}, canDeactivate:[PreventUnsavedChanges]},

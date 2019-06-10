@@ -25,6 +25,8 @@ export class NavComponent implements OnInit {
     },error=>{
       this.alertify.error(error);
     },()=>{
+      //check if role from token is Admin go to products user page
+      //else go to products admin page
       this.router.navigate(['/products']);
     });
   }

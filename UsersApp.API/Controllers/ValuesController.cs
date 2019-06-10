@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using UsersApp.API.Models;
 
 namespace UsersApp.API.Controllers
 {
@@ -15,7 +16,7 @@ namespace UsersApp.API.Controllers
         
         // GET api/values
         [HttpGet]
-        
+        [Authorize(Roles = Role.User)]
         public ActionResult<IEnumerable<string>> Get()
         {
             return new string[] { "value1", "value2" };
@@ -23,6 +24,7 @@ namespace UsersApp.API.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
+        [Authorize(Roles = Role.Admin)]
         public ActionResult<string> Get(int id)
         {
             return "value";

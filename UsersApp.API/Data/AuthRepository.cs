@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using UsersApp.API.Admin.Data;
-using UsersApp.API.Admin.Models;
+
+
 using UsersApp.API.Models;
 
 namespace UsersApp.API.Data
@@ -9,12 +9,12 @@ namespace UsersApp.API.Data
     public class AuthRepository : IAuthRepository
     {
         DataContext context;
-        AdminDataContext adminContext;
+     
 
-        public AuthRepository(DataContext context,AdminDataContext adminContext)
+        public AuthRepository(DataContext context)
         {
             this.context = context;
-            this.adminContext = adminContext;
+           
         }
 
 
@@ -36,24 +36,7 @@ namespace UsersApp.API.Data
             return user;
 
         }
-        public async Task<AdminUser> LogInAdmin(string email, string password) //plain text/password = diart
-        {
-  
-                var user = await adminContext.Admins.FirstOrDefaultAsync(u => u.Email == email);
-
-                if (user == null)
-                {
-                    return null; //NOT AUTHORIZED
-                }
-          
-            
-            if(!VerifyPasswordHash(password,user.PasswordHash,user.PasswordSalt)){
-                return null;
-            }
-            
-            return user;
-
-        }
+        
         private bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
         {
            using(var hmac = new System.Security.Cryptography.HMACSHA512(passwordSalt)){
@@ -86,23 +69,7 @@ namespace UsersApp.API.Data
             return user;
 
         }
-        public async Task<AdminUser> RegisterAdmin(AdminUser user, string password) //plain text/password = diart
-        {
-            byte[] passwordHash;
-            byte[] passwordSalt;
-
-            CreatePasswordHash(password, out passwordHash, out passwordSalt);
-
-            user.PasswordHash = passwordHash;
-            user.PasswordSalt = passwordSalt;
-
-
-            await adminContext.AddAsync(user);
-            await adminContext.SaveChangesAsync();
-
-            return user;
-
-        }
+       
         private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
         {
             using (var hmac = new System.Security.Cryptography.HMACSHA512())
@@ -112,18 +79,12 @@ namespace UsersApp.API.Data
             }
         }
 
-        public async Task<bool> UserExists(string email,bool isAdmin)
+        public async Task<bool> UserExists(string email)
         {
-            if(isAdmin){
-
-                if(await adminContext.Admins.AnyAsync(x=>x.Email.Equals(email)))
-                return true;
-            }
-            else
-            {
+            
                 if(await context.Users.AnyAsync(x=>x.Email.Equals(email)))
                 return true;
-            }
+           
             
             return false;
         }
