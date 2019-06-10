@@ -5,7 +5,6 @@ namespace UsersApp.API.Models
         public int Id {get; set;}
         public string url {get; set;}
         public string publicId {get; set;} 
-
         public int UserId {get; set;}
         public User User {get; set;}
     }

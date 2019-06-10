@@ -12,7 +12,6 @@ namespace UsersApp.API.Models
         public DateTime DateOfBirth { get; set; }
         public DateTime Created { get; set; }
         public string Address { get; set; }
-
         public string City { get; set; }
         public string Country { get; set; }
         public string Role { get; set; }
